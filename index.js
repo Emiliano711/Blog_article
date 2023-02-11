@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const { sequelize, Author, Article, Comment } = require("./models/index")
+const { sequelize, Author, Article, Comment } = require("./models/index");
 const testConnection = require("./testConnection");
 const createTables = require("./createTables");
 const authorSeeder = require("./seeders/authorSeeder");
@@ -11,15 +11,16 @@ const express = require("express");
 const app = express();
 const APP_PORT = process.env.APP_PORT;
 
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
 
-//iife 
+//iife
 (async function () {
   await createTables(sequelize);
   await authorSeeder(Author);
   await articleSeeder(Article);
   await commentSeeder(Comment);
-  
 })();
 
 app.get("/", async (req, res) => {
@@ -27,7 +28,7 @@ app.get("/", async (req, res) => {
     include: Article,
     order: [["id", "DESC"]],
   });
-  res.json(author);
+  res.render("home", { author });
 });
 
 app.get("/articles", async (req, res) => {
@@ -35,14 +36,15 @@ app.get("/articles", async (req, res) => {
     include: Author,
     order: [["id", "DESC"]],
   });
-  return res.json(article);
+  // res.render();
 });
+
 
 app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id);
-  return res.json(article)
+  return res.json(article);
 });
 
-
-
-app.listen(APP_PORT, () => console.log(`Listening http://localhost:${APP_PORT}`));
+app.listen(APP_PORT, () =>
+  console.log(`Listening http://localhost:${APP_PORT}`)
+);
