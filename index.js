@@ -46,6 +46,13 @@ app.get("/articles/:id", async (req, res) => {
   return res.render("articles", {article});
 });
 
+app.get("/admin", async (req, res) => {
+  const admin = await Article.findAll({
+    include: Author,
+  })
+  res.render("admin", {admin})
+});
+
 app.listen(APP_PORT, () =>
   console.log(`Listening http://localhost:${APP_PORT}`)
 );
