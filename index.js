@@ -9,6 +9,7 @@ const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
 
+//iife 
 (async function () {
   await createTables(sequelize);
   await authorSeeder(Author);
@@ -18,7 +19,9 @@ app.set("view engine", "ejs");
 })();
 
 app.get("/", async (req, res) => {
-  const author = await Author.findAll();
+  const author = await Author.findAll({
+    include: Article,
+  });
   res.json(author);
 });
 

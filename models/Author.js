@@ -15,6 +15,10 @@ Author.init(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+    },
   },
   {
     sequelize,

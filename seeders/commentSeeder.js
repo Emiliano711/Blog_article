@@ -6,6 +6,7 @@ module.exports = async function (Comment) {
     comments.push({
 
         content: faker.lorem.paragraph(),//paragraph en singular hace un solo parrafo
+        CommentId: faker.random.numeric(1, 40)
     });
   }  
 

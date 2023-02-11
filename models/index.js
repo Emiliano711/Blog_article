@@ -3,7 +3,7 @@ const { Sequelize, Model, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("article_db", "root", "root", {
   dialect: "mysql",
   host: "localhost",
-  logging: false, // Para evitar que TablePlus envie los mensajes de creacion de Tablas
+  logging: false, // Para evitar que TablePlus envie los mensajes de creacion
 });
 
 const Author = require("./Author")(sequelize, Model, DataTypes);
