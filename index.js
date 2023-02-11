@@ -23,26 +23,27 @@ app.set("view engine", "ejs");
   await commentSeeder(Comment);
 })();
 
-app.get("/", async (req, res) => {
-  const author = await Author.findAll({
-    include: Article,
-    order: [["id", "DESC"]],
-  });
-  res.render("home", { author });
-});
-
-app.get("/articles", async (req, res) => {
-  const article = await Article.findAll({
+app.get("/api/blog", async (req, res) => {
+  const articles = await Article.findAll({
     include: Author,
     order: [["id", "DESC"]],
   });
-  // res.render();
+  res.json(articles);
 });
 
+app.get("/", async (req, res) => {
+  const articles = await Article.findAll({
+    include: Author,
+    order: [["id", "DESC"]],
+  });
+  return res.render("home", {articles});
+});
 
 app.get("/articles/:id", async (req, res) => {
-  const article = await Article.findByPk(req.params.id);
-  return res.json(article);
+  const article = await Article.findByPk(req.params.id, {
+    include: Author,
+  })
+  return res.render("articles", {article});
 });
 
 app.listen(APP_PORT, () =>

@@ -16,7 +16,6 @@ const Article = require("./Article")(sequelize, Model, DataTypes);
 const Comment = require("./Comment")(sequelize, Model, DataTypes);
 
 //Asociacion
-// Un Autor puede tener muchos articulos
 Author.hasMany(Article);
 Article.belongsTo(Author);
 Article.hasMany(Comment);
