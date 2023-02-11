@@ -7,6 +7,7 @@ module.exports = async function (Author) {
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
       email: faker.internet.email(),
+     
     });
   }  
 
