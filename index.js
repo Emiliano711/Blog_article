@@ -26,12 +26,17 @@ app.get("/", async (req, res) => {
   res.json(author);
 });
 
-app.get("/article", async (req, res) => {
+app.get("/articles", async (req, res) => {
   const article = await Article.findAll({
     include: Author,
     order: [["id", "DESC"]],
   });
   return res.json(article);
+});
+
+app.get("/articles/:id", async (req, res) => {
+  const article = await Article.findByPk(req.params.id);
+  return res.json(article)
 });
 
 
