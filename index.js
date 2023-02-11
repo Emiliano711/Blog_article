@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const { sequelize, Author, Article, Comment } = require("./models/index")
 const testConnection = require("./testConnection");
 const createTables = require("./createTables");
@@ -7,6 +9,8 @@ const commentSeeder = require("./seeders/commentSeeder");
 
 const express = require("express");
 const app = express();
+const APP_PORT = process.env.APP_PORT;
+
 app.set("view engine", "ejs");
 
 //iife 
@@ -41,4 +45,4 @@ app.get("/articles/:id", async (req, res) => {
 
 
 
-app.listen(8000, () => console.log("Listening http://localhost:8000"));
+app.listen(APP_PORT, () => console.log(`Listening http://localhost:${APP_PORT}`));
