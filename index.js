@@ -21,8 +21,17 @@ app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
   const author = await Author.findAll({
     include: Article,
+    order: [["id", "DESC"]],
   });
   res.json(author);
+});
+
+app.get("/article", async (req, res) => {
+  const article = await Article.findAll({
+    include: Author,
+    order: [["id", "DESC"]],
+  });
+  return res.json(article);
 });
 
 
