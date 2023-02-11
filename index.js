@@ -7,6 +7,7 @@ const commentSeeder = require("./seeders/commentSeeder");
 
 const express = require("express");
 const app = express();
+app.set("view engine", "ejs");
 
 (async function () {
   await createTables(sequelize);
@@ -20,5 +21,7 @@ app.get("/", async (req, res) => {
   const author = await Author.findAll();
   res.json(author);
 });
+
+
 
 app.listen(8000, () => console.log("Listening http://localhost:8000"));
