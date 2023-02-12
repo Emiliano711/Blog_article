@@ -57,26 +57,43 @@ app.get("/admin", async (req, res) => {
   return res.render("admin", { articles });
 });
 
-app.get("/admin/edit/:id", async (req, res) => {
-  const article = await Article.findByPk(req.params.id);
-  res.render("editForm", { article });
+ app.get("/admin/edit/:id", async (req, res) => {
+ const article = await Article.findByPk(req.params.id);
+ res.render("editForm", { article });
 });
 
 app.post("/admin/edit/:id", async (req, res) => {
   const artic = await Article.findByPk(req.params.id, {
     include: Author,
   })
-  artic.title = req.body.title;
-  artic.AuthorId = req.body.author;
-  artic.content = req.body.content;
-  await artic.save();
-  res.redirect("/admin", { artic });
+  await artic.update({
+  title: req.body.title,
+  AuthorId: req.body.author,
+  content: req.body.content,
+  });
+  res.redirect("/admin");
 });
 
-app.delete("admin/delete/:id", async (req, res) => {
+/* app.delete("admin/delete/:id", async (req, res) => {
   delete await db(`DELETE FROM articles WHERE id = ${req.params.id}`);
   return res.redirect("/");
-});
+}); */
+app.get("/admin/delete/:id", async (req, res)=>{
+  id = req.params.id;
+  await db.destroy({
+    where: {
+      id: id
+    }
+  }).then((result)=>{
+    if (result){
+      res.redirect("/admin")
+    } else {
+      res.send("Id not found")
+    }
+  })
+
+})
+
 
 app.listen(APP_PORT, () =>
   console.log(`Listening http://localhost:${APP_PORT}`)
