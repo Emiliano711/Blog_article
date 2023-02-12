@@ -1,4 +1,5 @@
 require("dotenv").config();
+const db = require("./db");
 
 const { sequelize, Author, Article, Comment } = require("./models/index");
 const testConnection = require("./testConnection");
@@ -12,6 +13,8 @@ const app = express();
 const APP_PORT = process.env.APP_PORT;
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.set("view engine", "ejs");
 
@@ -36,21 +39,43 @@ app.get("/", async (req, res) => {
     include: Author,
     order: [["id", "DESC"]],
   });
-  return res.render("home", {articles});
+  return res.render("home", { articles });
 });
 
 app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
     include: Author,
-  })
-  return res.render("articles", {article});
+  });
+  return res.render("articles", { article });
 });
 
-app.get("/admin", async (req, res) => {//ruta de admin
+app.get("/admin", async (req, res) => {
+  //ruta de admin
   const articles = await Article.findAll({
-    include: Author,// incluyo author para la columna que trae firstname & lastname
-      });
-  return res.render("admin", {articles});
+    include: Author, // incluyo author para la columna que trae firstname & lastname
+  });
+  return res.render("admin", { articles });
+});
+
+app.get("/admin/edit/:id", async (req, res) => {
+  const article = await Article.findByPk(req.params.id);
+  res.render("editForm", { article });
+});
+
+app.post("/admin/edit/:id", async (req, res) => {
+  const artic = await Article.findByPk(req.params.id, {
+    include: Author,
+  })
+  artic.title = req.body.title;
+  artic.AuthorId = req.body.author;
+  artic.content = req.body.content;
+  await artic.save();
+  res.redirect("/admin", { artic });
+});
+
+app.delete("admin/delete/:id", async (req, res) => {
+  delete await db(`DELETE FROM articles WHERE id = ${req.params.id}`);
+  return res.redirect("/");
 });
 
 app.listen(APP_PORT, () =>
