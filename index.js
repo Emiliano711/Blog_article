@@ -46,11 +46,11 @@ app.get("/articles/:id", async (req, res) => {
   return res.render("articles", {article});
 });
 
-app.get("/admin", async (req, res) => {
-  const admin = await Article.findAll({
-    include: Author,
-  })
-  res.render("admin", {admin})
+app.get("/admin", async (req, res) => {//ruta de admin
+  const articles = await Article.findAll({
+    include: Author,// incluyo author para la columna que trae firstname & lastname
+      });
+  return res.render("admin", {articles});
 });
 
 app.listen(APP_PORT, () =>

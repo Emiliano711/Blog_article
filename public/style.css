@@ -79,3 +79,16 @@ input {
   margin: auto;
   margin-bottom: 20px;
 }
+
+.table-container {
+  margin: auto;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.table {
+  margin: auto;
+  width: 85%;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px gray;
+}
