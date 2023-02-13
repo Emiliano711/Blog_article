@@ -21,7 +21,7 @@
         <%= article.Author.firstname %> <%= article.Author.lastname %> <%=
         article.createdAt %>
       </p>
-      <img class="img-fluid mt-2"  src="<%= article.Author.image %>" alt="imagen del author">  
+      <img class="img-fluid mt-2"  src="<%= article.image %>" alt="imagen del author">  
     </div>
     <p id="parrafo"><%= article.content %></p>
 
@@ -35,7 +35,7 @@
       <select class="form-select" aria-label="Default select example" name="author">
         <option selected>Open this select menu</option> 
         <% for (const user of author) { %>
-          <option value= "<%= user.id %>" <%= user.firstname %> <%= user.lastname %></option>
+          <option value="<%= user.id %>"> <%= user.firstname %> <%= user.lastname %></option>
         <% } %>
       </select>
         <textarea 
@@ -47,7 +47,7 @@
         <button id="boton" class="btn btn-primary">Post</button>
       </form>
       <div class="comment-container">
-        <h3 class="comment-h3">Comments</h3>
+        <h3 class="comment-h3">Comments ( <%= comments.length %> )</h3>
         <% for (const comment of comments) { %>
           <p class="postComment"><%= comment.content %> </p>
           <small id="small"> <%= comment.Author.firstname %> <%= comment.Author.lastname %> </small>

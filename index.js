@@ -1,4 +1,5 @@
 require("dotenv").config();
+const formidable = require("formidable");
 
 const { sequelize, Author, Article, Comment } = require("./models/index");
 const testConnection = require("./testConnection");
@@ -25,6 +26,14 @@ app.set("view engine", "ejs");
 //   await commentSeeder(Comment);
 // })();
 
+const form = formidable ({
+  multiples: true, 
+  uploadDir: __dirname + "/public/img/",
+  keepExtensions: true
+});
+
+
+
 app.get("/api/blog", async (req, res) => {
   const articles = await Article.findAll({
     include: Author,
@@ -37,7 +46,7 @@ app.get("/", async (req, res) => {
   const articles = await Article.findAll({
     include: Author,
     order: [["id", "DESC"]],
-  });
+  })
   return res.render("home", { articles });
 });
 
@@ -59,7 +68,7 @@ app.get("/articles/:id", async (req, res) => {
 app.post("/comments/:id", async (req, res) => {
 await Comment.create({
   content: req.body.content,
-  // AuthorId: req.body.lastname,
+  AuthorId: req.body.author,
   ArticleId: req.params.id,
  })
 res.redirect(`/articles/${req.params.id}`)
@@ -106,14 +115,15 @@ app.get("/create", (req, res) => {
 });
 
 app.post("/create", async (req, res) => {
-  await Article.create({
+ const newUser = await Article.create({
+    AuthorId: req.body.idUser,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     title: req.body.title,
     content: req.body.content,
     image: req.body.image,
   });
-  res.redirect("/admin");
+  return res.redirect("/admin");
 });
 
 app.listen(APP_PORT, () =>
