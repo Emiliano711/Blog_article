@@ -17,15 +17,24 @@
     <%- include("partials/navbar") %>
 
     <main>
-      <h1>Articles</h1>
-      <a
-        href="/create"
-        class="btn btn-success text-end"
-        id="new"
-        target="_blank"
-        >New</a
-      >
-      <table class="table border shadow table-striped p-2" id="table">
+      <h1 id="article-title">Articles</h1>
+      <div id="buttons">
+        <a
+          href="/create"
+          class="btn btn-success text-end"
+          id="new"
+          target="_blank"
+          >New Article</a
+        >
+        <a
+          href="/create/newAuthor"
+          class="btn btn-success text-end"
+          id="newAuthor"
+          target="_blank"
+          >New Author</a
+        >
+      </div>
+      <table class="table table-striped p-2" id="admin-table">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -38,22 +47,19 @@
           </tr>
         </thead>
         <tbody>
-          <% for (let i = 0; i < articles.length && i < 5; i++) { %>
+          <% for (const artic of articles) { %>
           <tr>
-            <th scope="row"><%= articles[i].id %></th>
-            <td><%= articles[i].title %></td>
-            <td><%= articles[i].content %></td>
-            <td><%= articles[i].image %></td>
-            <td><%= articles[i].createdAt %></td>
+            <th scope="row"><%= artic.id %></th>
+            <td><%= artic.title %></td>
+            <td><%= artic.content %></td>
+            <td><%= artic.image %></td>
+            <td><%= artic.createdAt %></td>
+            <td><%= artic.Author.firstname %> <%= artic.Author.lastname %></td>
             <td>
-              <%= articles[i].Author.firstname %> <%=
-              articles[i].Author.lastname %>
-            </td>
-            <td>
-              <a href="/admin/edit/<%= articles[i].id %>">
+              <a href="/admin/edit/<%= artic.id %>">
                 <button class="btn btn-primary">Modify</button>
               </a>
-              <a href="/admin/delete/<%= articles[i].id %>">
+              <a href="/admin/delete/<%= artic.id %>">
                 <button class="btn btn-danger">Delete</button>
               </a>
             </td>

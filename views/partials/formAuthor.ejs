@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/style.css" />
+<div class="mb-3 p-4">
+  <form action="/create/newAuthor" method="post" id="edit-form">
+    <h3 class="new-user-form">Create your user to create an article</h3>
+    <label for="firstname" class="form-label">Firstname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstname"
+      placeholder="firstname..."
+      name="firstname"
+    />
+    <label for="lastname" class="form-label">Lastname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastname"
+      name="lastname"
+      placeholder="lastname..."
+    />
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="email..."
+    />
+    <label for="id" class="form-label">ID</label>
+    <input
+      type="text"
+      class="form-control"
+      id="id"
+      name="authorId"
+      placeholder="ID..."
+    />
+    <button type="submit" class="btn btn-success">Create</button>
+  </form>
+</div>

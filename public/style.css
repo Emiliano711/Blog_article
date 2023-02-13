@@ -12,6 +12,29 @@
   justify-content: center;
 }
 
+#article-title {
+  margin-left: 106px;
+  margin-top: 20px;
+  color: white;
+  font-size: 3.3rem;
+  text-shadow: 2px 0px 4px rgb(65, 4, 78);
+}
+
+#container-img {
+  background-image: url("https://i1.wp.com/www.adams.es/blogs/alumno/files/2020/06/portada-empezar-a-estudiar.jpg?w=2280&ssl=1");
+  height: 20rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#img-container {
+  width: 100%;
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -80,11 +103,13 @@ input {
   margin-bottom: 20px;
 }
 
-.table {
+#admin-table {
   margin: auto;
+  margin-top: 20px;
   width: 85%;
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px gray;
+  /* border: 1px solid rgba(0, 0, 0, 0.361); */
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgb(161, 91, 161);
 }
 
 .modal {
@@ -118,8 +143,12 @@ textarea {
   border-radius: 20px;
 }
 
-#new {
-  margin-left: 89%;
+#buttons {
+  width: 85%;
+  margin: auto;
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
 }
 
 #table {
@@ -139,4 +168,37 @@ textarea {
 
 #h3-comment {
   text-align: center;
+}
+
+#edit-form {
+  width: 60%;
+  margin: auto;
+}
+
+#main-title {
+  font-size: 4rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 25px rgb(161, 91, 161);
+}
+
+#subtitle {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 25px rgb(161, 91, 161);
+}
+
+#title-label {
+  margin-top: 20px;
+}
+
+#body-edit-form {
+  background-color: thistle;
+}
+
+#content:hover {
+  box-shadow: 0 0 25px rgb(134, 63, 134);
+}
+
+#title:hover {
+  box-shadow: 0 0 25px rgb(134, 63, 134);
 }

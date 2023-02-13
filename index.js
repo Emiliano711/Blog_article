@@ -2,11 +2,11 @@ require("dotenv").config();
 const formidable = require("formidable");
 
 const { sequelize, Author, Article, Comment } = require("./models/index");
-const testConnection = require("./testConnection");
-const createTables = require("./createTables");
-const authorSeeder = require("./seeders/authorSeeder");
-const articleSeeder = require("./seeders/articleSeeder");
-const commentSeeder = require("./seeders/commentSeeder");
+// const testConnection = require("./testConnection");
+// const createTables = require("./createTables");
+// const authorSeeder = require("./seeders/authorSeeder");
+// const articleSeeder = require("./seeders/articleSeeder");
+// const commentSeeder = require("./seeders/commentSeeder");
 
 const express = require("express");
 const app = express();
@@ -32,8 +32,6 @@ const form = formidable ({
   keepExtensions: true
 });
 
-
-
 app.get("/api/blog", async (req, res) => {
   const articles = await Article.findAll({
     include: Author,
@@ -41,6 +39,20 @@ app.get("/api/blog", async (req, res) => {
   });
   res.json(articles);
 });
+
+app.get("/create/newAuthor", async (req, res) => {
+  return res.render("newAuthor");
+});
+
+app.post("/create/newAuthor", async (req, res) => {
+  const newAuthor = await Author.create({
+    AuthorId: req.body.authorId,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+  });
+  return res.redirect("/admin")
+})
 
 app.get("/", async (req, res) => {
   const articles = await Article.findAll({
@@ -61,7 +73,6 @@ app.get("/articles/:id", async (req, res) => {
     include: Author
   })
   const author = await Author.findAll()
-  console.log(author.firstname)
   res.render("articles", { article, comments, author });
 });
 
@@ -123,6 +134,12 @@ app.post("/create", async (req, res) => {
     content: req.body.content,
     image: req.body.image,
   });
+
+  // form.parse(req, (err, fields, files) => {
+  //   console.log(fields)
+  //   console.log(files)
+  // })
+
   return res.redirect("/admin");
 });
 
