@@ -16,7 +16,12 @@
   <body id="body">
     <%-include("partials/navbar") %>
     <div class="mb-3">
-      <form id="newArt" action="/create" method="post">
+      <form
+        id="newArt"
+        action="/create"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <label for="firstname" class="form-label">Firstname</label>
         <input
           type="text"
@@ -49,14 +54,14 @@
           rows="3"
           placeholder="title..."
         />
-        <!-- <label for="image" class="form-label">Select an image</label>
+        <label for="image" class="form-label">Select an image</label>
         <input
-        type="file"
-        class="form-control"
-        id="image"
-        name="image"
-        placeholder="Add image..."
-      /> -->
+          type="file"
+          class="form-control"
+          id="image"
+          name="image"
+          placeholder="Add image..."
+        />
         <label for="content" class="form-label">Content</label>
         <textarea
           class="form-control"

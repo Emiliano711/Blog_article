@@ -59,6 +59,7 @@ app.get("/", async (req, res) => {
     include: Author,
     order: [["id", "DESC"]],
   })
+  console.log(articles);
   return res.render("home", { articles });
 });
 
@@ -126,19 +127,19 @@ app.get("/create", (req, res) => {
 });
 
 app.post("/create", async (req, res) => {
- const newUser = await Article.create({
-    AuthorId: req.body.idUser,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    title: req.body.title,
-    content: req.body.content,
-    image: req.body.image,
-  });
-
-  // form.parse(req, (err, fields, files) => {
-  //   console.log(fields)
-  //   console.log(files)
-  // })
+  
+  form.parse(req, async (err, fields, files) => {
+    console.log(fields)
+    console.log(files)
+    const newUser = await Article.create({
+       AuthorId: fields.idUser,
+       firstname: fields.firstname,
+       lastname: fields.lastname,
+       title: fields.title,
+       content: fields.content,
+       image: files.image.newFilename,
+     });
+  })
 
   return res.redirect("/admin");
 });
