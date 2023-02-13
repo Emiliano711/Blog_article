@@ -7,7 +7,8 @@ module.exports = async function (Article) {
             title: faker.lorem.sentence(),
             content: faker.lorem.paragraphs(),
             AuthorId: faker.random.numeric(1, 40),//
-            CommentId: faker.random.numeric(1, 40)
+            CommentId: faker.random.numeric(1, 40),
+            image: faker.image.avatar()
         });
     }
   
