@@ -51,8 +51,9 @@ app.get("/articles/:id", async (req, res) => {
     },
     include: Author
   })
-  console.log(article.Comment);
-  res.render("articles", { article, comments });
+  const author = await Author.findAll()
+  console.log(author.firstname)
+  res.render("articles", { article, comments, author });
 });
 
 app.post("/comments/:id", async (req, res) => {
@@ -110,6 +111,7 @@ app.post("/create", async (req, res) => {
     lastname: req.body.lastname,
     title: req.body.title,
     content: req.body.content,
+    image: req.body.image,
   });
   res.redirect("/admin");
 });
