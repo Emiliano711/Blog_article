@@ -29,7 +29,7 @@
       <h3 id="h3">Add comment</h3>
       <form
         action="/articles/<%= article.id %> "
-        method="get"
+        method="post"
         id="form-comment"
       >
         <input
@@ -50,19 +50,9 @@
       </form>
       <div class="comment-container">
         <h3>Comments</h3>
-
-        <ul>
-          <% for (const comment of comments){ %>
-          <li><%= comment.content %></li>
-          <small
-            ><%= article.Author.firstname %><%= article.Author.lastname
-            %></small
-          >
-          <% } %>
-        </ul>
+        
       </div>
     </div>
-
     <%- include ("partials/footer") %>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

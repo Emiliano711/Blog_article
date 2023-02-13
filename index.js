@@ -45,18 +45,17 @@ app.get("/", async (req, res) => {
 app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
     include: Author,
-  })
-  const comments = await Comment.findAll({
-    where: {
-    articleId: articleId,
-    limit:2
-  }
+    Comment,
+  });
+  res.render("articles", { article });
+});
 
-  })
-res.redirect("/articles", {article:articleId, comments:comments})
-
-
- // return res.render("articles", { article });
+app.post("articles/:id", async (req, res) => {
+const comment = await Comment.findByPk(req.params.id)
+ commen = req.body.comment;
+ name = req.body.name;
+await comment.save();
+res.redirect("/articles")
 });
 
 app.get("/admin", async (req, res) => {
@@ -108,10 +107,6 @@ app.post("/create", async (req, res) => {
   });
   res.redirect("/admin");
 });
-
-
-
-
 
 app.listen(APP_PORT, () =>
   console.log(`Listening http://localhost:${APP_PORT}`)
