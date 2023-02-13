@@ -45,8 +45,18 @@ app.get("/", async (req, res) => {
 app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
     include: Author,
-  });
-  return res.render("articles", { article });
+  })
+  const comments = await Comment.findAll({
+    where: {
+    articleId: articleId,
+    limit:2
+  }
+
+  })
+res.redirect("/articles", {article:articleId, comments:comments})
+
+
+ // return res.render("articles", { article });
 });
 
 app.get("/admin", async (req, res) => {
@@ -98,6 +108,10 @@ app.post("/create", async (req, res) => {
   });
   res.redirect("/admin");
 });
+
+
+
+
 
 app.listen(APP_PORT, () =>
   console.log(`Listening http://localhost:${APP_PORT}`)
