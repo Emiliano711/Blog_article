@@ -28,29 +28,31 @@
     <div class="mb-3">
       <h3 id="h3">Add comment</h3>
       <form
-        action="/articles/<%= article.id %> "
+        action="/comments/<%= article.id %> "
         method="post"
         id="form-comment"
       >
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="name"
-          name="name"
-        />
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
 
         <textarea
           class="form-control"
-          id="comment"
+          id="content"
           rows="3"
-          name="comment"
+          name="content"
         ></textarea>
         <button id="boton" class="btn btn-primary">Post</button>
       </form>
       <div class="comment-container">
         <h3>Comments</h3>
-        
+        <% for (const comment of comments) { %>
+          <p><%= comment.content %> </p>
+          <small> <%= comment.Author.firstname %> <%= comment.Author.lastname %> </small>
+        <% } %>
       </div>
     </div>
     <%- include ("partials/footer") %>

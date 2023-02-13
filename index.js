@@ -1,5 +1,4 @@
 require("dotenv").config();
-const db = require("./db");
 
 const { sequelize, Author, Article, Comment } = require("./models/index");
 const testConnection = require("./testConnection");
@@ -19,12 +18,12 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 //iife
-(async function () {
-  await createTables(sequelize);
-  await authorSeeder(Author);
-  await articleSeeder(Article);
-  await commentSeeder(Comment);
-})();
+// (async function () {
+//   await createTables(sequelize);
+//   await authorSeeder(Author);
+//   await articleSeeder(Article);
+//   await commentSeeder(Comment);
+// })();
 
 app.get("/api/blog", async (req, res) => {
   const articles = await Article.findAll({
@@ -44,18 +43,25 @@ app.get("/", async (req, res) => {
 
 app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
-    include: Author,
-    Comment,
+    include: [Author, Comment]
   });
-  res.render("articles", { article });
+  const comments = await Comment.findAll({
+    where: {
+      ArticleId: req.params.id
+    },
+    include: Author
+  })
+  console.log(article.Comment);
+  res.render("articles", { article, comments });
 });
 
-app.post("articles/:id", async (req, res) => {
-const comment = await Comment.findByPk(req.params.id)
- commen = req.body.comment;
- name = req.body.name;
-await comment.save();
-res.redirect("/articles")
+app.post("/comments/:id", async (req, res) => {
+await Comment.create({
+  content: req.body.content,
+  // AuthorId: req.body.lastname,
+  ArticleId: req.params.id,
+ })
+res.redirect(`/articles/${req.params.id}`)
 });
 
 app.get("/admin", async (req, res) => {
