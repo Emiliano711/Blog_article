@@ -129,8 +129,6 @@ app.get("/create", (req, res) => {
 app.post("/create", async (req, res) => {
   
   form.parse(req, async (err, fields, files) => {
-    console.log(fields)
-    console.log(files)
     const newUser = await Article.create({
        AuthorId: fields.idUser,
        firstname: fields.firstname,

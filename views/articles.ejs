@@ -50,7 +50,7 @@
         <h3 class="comment-h3">Comments ( <%= comments.length %> )</h3>
         <% for (const comment of comments) { %>
           <p class="postComment"><%= comment.content %> </p>
-          <small id="small"> <%= comment.Author.firstname %> <%= comment.Author.lastname %> </small>
+          <p id="smallComment"> Comment by <%= comment.Author.firstname %> <%= comment.Author.lastname %> </p>
         <% } %>
       </div>
     </div>
