@@ -1,29 +1,21 @@
 <div class="mb-3 p-4">
-  <form action="/admin/edit/<%= artic.id %>" method="post">
+  <form action="/admin/edit/<%= article.id %>" method="post">
     Modify your article
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="title..."
+      name="title"
+    />
+    <label for="content" class="form-label">Content</label>
+    <textarea
+      class="form-control"
+      id="content"
+      rows="3"
+      name="content"
+    ></textarea>
+    <button type="submit" class="btn btn-success">Edit</button>
   </form>
-  <label for="title" class="form-label">Title</label>
-  <input
-    type="text"
-    class="form-control"
-    id="title"
-    placeholder="title..."
-    name="title"
-  />
-  <label for="author" class="form-label">Author</label>
-  <input
-    type="text"
-    class="form-control"
-    id="author"
-    placeholder="Author"
-    name="author"
-  />
-  <label for="content" class="form-label">Content</label>
-  <textarea
-    class="form-control"
-    id="content"
-    rows="3"
-    name="content"
-  ></textarea>
-  <button type="submit" class="btn btn-success">Edit</button>
 </div>

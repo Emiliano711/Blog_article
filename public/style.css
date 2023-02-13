@@ -86,3 +86,48 @@ input {
   border: 1px solid black;
   box-shadow: 2px 2px 5px gray;
 }
+
+.modal {
+  width: 60%;
+  margin: auto;
+  margin-top: 50%;
+  padding: 10px;
+ border: 1px solid red;
+}
+
+#newArt {
+  box-shadow: 0 0 25px violet;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+#newArt label {
+  margin-bottom: 20px;
+}
+
+#newArt input {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 25px violet;
+}
+
+textarea {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 25px violet;
+}
+
+#new {
+  margin-left: 89%;
+}
+
+#table {
+  margin-top: 30px;
+}
+
+#body {
+  background-color: antiquewhite;
+}
