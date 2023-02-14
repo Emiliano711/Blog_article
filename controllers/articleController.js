@@ -1,5 +1,5 @@
 //
-const { sequelize, Author, Article, Comment } = require("./models/index");
+const { sequelize, Author, Article, Comment } = require("../models/index");
 
 const showHome = async (req, res) => {
     const articles = await Article.findAll({

@@ -11,6 +11,7 @@ const { sequelize, Author, Article, Comment } = require("./models/index");
 const express = require("express");
 const app = express();
 const APP_PORT = process.env.APP_PORT;
+const routes = require("./routes/")
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -76,15 +77,15 @@ app.post("/create/newAuthor", async (req, res) => {
   const author = await Author.findAll()
   res.render("articles", { article, comments, author });
 }); */
-
-app.post("/comments/:id", async (req, res) => {
-await Comment.create({
-  content: req.body.content,
-  AuthorId: req.body.author,
-  ArticleId: req.params.id,
- })
-res.redirect(`/articles/${req.params.id}`)
-});
+// CommentRoutes + CommentController(CommentPost)
+// app.post("/comments/:id", async (req, res) => {
+// await Comment.create({
+//   content: req.body.content,
+//   AuthorId: req.body.author,
+//   ArticleId: req.params.id,
+//  })
+// res.redirect(`/articles/${req.params.id}`)
+// });
 
 app.get("/admin", async (req, res) => {
   //ruta de admin
