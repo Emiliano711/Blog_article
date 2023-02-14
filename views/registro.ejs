@@ -13,27 +13,42 @@
   </head>
   <body>
     <%- include('partials/navbar') %>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <h1>Hello, world!</h1>
-          <div class="col-6">
-            <form action="">
-              <div class="card" style="width: 18rem">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-            </form>
-          </div>
+    <div class="container my-5">
+      <div class="d-flex justify-content-center">
+        <div style="width: 18rem">
+          <h4>Log in to create your own blogs!</h4>
+          <p>What are you waiting for?</p>
         </div>
+        <form action="" method="post">
+          <div class="card">
+            <div class="card-body">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+              <div class="input-group mb-3 text-center">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Pass"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <a class="btn btn-dark" href="#" role="button">Log In</a>
+              <a class="btn btn-dark" href="#" role="button"
+                >Create New Account</a
+              >
+            </div>
+          </div>
+        </form>
       </div>
     </div>
     <%- include('partials/footer') %>
