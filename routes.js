@@ -32,4 +32,6 @@ router.post("/create/newAuthor", adminController.newAuthorFormData);
 
 router.get("/registro", userController.show);
 
+router.get("/registro/login", userController.login);
+
 module.exports = router;

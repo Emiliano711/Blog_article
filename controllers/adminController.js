@@ -41,6 +41,8 @@ const newAuthorForm = async (req, res) => {
 };
 
 const newAuthorFormData = async (req, res) => {
+  const user = awaitAuthor.findOne({ where: { username: req.body.username } });
+  console.log(user.password);
   const newAuthor = await Author.create({
     firstname: req.body.firstname,
     lastname: req.body.lastname,

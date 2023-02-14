@@ -7,6 +7,9 @@ async function index(req, res) {}
 async function show(req, res) {
   res.render("registro");
 }
+async function login(req, res) {
+  res.redirect("/registro");
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
@@ -34,4 +37,5 @@ module.exports = {
   edit,
   update,
   destroy,
+  login,
 };

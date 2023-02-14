@@ -1,3 +1,3 @@
 module.exports = async function (sequelize) {
-    await sequelize.sync({force: true});
+  await sequelize.sync({ force: false });
 };
