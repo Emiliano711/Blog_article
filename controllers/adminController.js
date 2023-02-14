@@ -45,6 +45,7 @@ const newAuthorFormData = async (req, res) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
+    password: req.body.password,
   });
   return res.redirect("/admin");
 };

@@ -22,11 +22,11 @@
     <section id="section">
       <% for (const art of articles) { %>
       <div id="content">
-        <a id="a" target="_blank" href="/articles/<%= art.id %> "><h4><%= art.title %></h4></a>
+        <a id="a" href="/articles/<%= art.id %> "><h4><%= art.title %></h4></a>
         <small> Created by <%= art.Author.firstname %> </small>
         <small> Created by <%= art.Author.lastname %> </small>
         <small> Created by <%= art.createdAt %> </small>
-        <hr>
+        <hr />
       </div>
       <% } %>
     </section>
@@ -36,6 +36,9 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="https://kit.fontawesome.com/06adc08716.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/06adc08716.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
