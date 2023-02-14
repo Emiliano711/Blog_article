@@ -1,12 +1,17 @@
-//
 const { sequelize, Author, Article, Comment } = require("../models/index");
+const formidable = require("formidable");
+
+const form = formidable ({
+  multiples: true, 
+  uploadDir: __dirname + "/public/img/",
+  keepExtensions: true
+});
 
 const showHome = async (req, res) => {
     const articles = await Article.findAll({
       include: Author,
       order: [["id", "DESC"]],
     })
-    console.log(articles);
     return res.render("home", { articles });
   };
 
@@ -26,7 +31,6 @@ const showHome = async (req, res) => {
          image: files.image.newFilename,
        });
     })
-  
     return res.redirect("/admin");
   };
 // index articles formato json
@@ -57,5 +61,6 @@ const showHome = async (req, res) => {
     createArticleForm,
     postDataArticle,
     index,
-    showSingleArticle
+    showSingleArticle,
+    form,
   }
