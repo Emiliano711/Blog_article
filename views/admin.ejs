@@ -19,15 +19,8 @@
     <main>
       <h1 id="article-title">Articles</h1>
       <div id="buttons">
-        <a href="/create" class="btn btn-success text-end" id="new">
-          New Article</a
-        >
-        <a
-          href="/create/newAuthor"
-          class="btn btn-success text-end"
-          id="newAuthor"
-          >New Author</a
-        >
+        <a href="/create" class="btn btn-success text-end" id="new"> New Article</a>
+        <a href="/create/newAuthor" class="btn btn-success text-end" id="newAuthor">New Author</a>
       </div>
       <table class="table table-striped p-2" id="admin-table">
         <thead>
@@ -47,7 +40,7 @@
             <th scope="row"><%= artic.id %></th>
             <td><%= artic.title %></td>
             <td><%= artic.content %></td>
-            <td><%= artic.image %></td>
+            <td><img src="<%= artic.image %>" alt="imgarticle" /></td>
             <td><%= artic.createdAt %></td>
             <td><%= artic.Author.firstname %> <%= artic.Author.lastname %></td>
             <td>
@@ -70,9 +63,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://kit.fontawesome.com/06adc08716.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/06adc08716.js" crossorigin="anonymous"></script>
   </body>
 </html>
