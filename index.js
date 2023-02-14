@@ -1,5 +1,4 @@
 require("dotenv").config();
-const formidable = require("formidable");
 
 const testConnection = require("./testConnection");
 const createTables = require("./createTables");
@@ -20,12 +19,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const form = formidable({
-  multiples: true,
-  uploadDir: __dirname + "/public/img/",
-  keepExtensions: true,
-});
-
 //iife
 (async function () {
   await createTables(sequelize);
@@ -36,6 +29,4 @@ const form = formidable({
 
 app.use(routes);
 
-app.listen(APP_PORT, () =>
-  console.log(`Listening http://localhost:${APP_PORT}`)
-);
+app.listen(APP_PORT, () => console.log(`Listening http://localhost:${APP_PORT}`));
