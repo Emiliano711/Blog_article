@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const articleController = require("./controllers/articleController")
-const commentController = require("./controllers/commentController")
-const adminController = require("./controllers/adminController")
+const articleController = require("./controllers/articleController");
+const commentController = require("./controllers/commentController");
+const adminController = require("./controllers/adminController");
+const userController = require("./controllers/userController");
 const formidable = require("formidable");
 
 router.get("/", articleController.showHome);
@@ -25,8 +26,10 @@ router.post("/admin/edit/:id", adminController.editFormData);
 
 router.get("/admin/delete/:id", adminController.destroy);
 
-router.get("/create/newAuthor",adminController.newAuthorForm);
+router.get("/create/newAuthor", adminController.newAuthorForm);
 
 router.post("/create/newAuthor", adminController.newAuthorFormData);
+
+router.get("/registro", userController.show);
 
 module.exports = router;
