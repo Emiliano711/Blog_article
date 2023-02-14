@@ -40,15 +40,9 @@ const newUserForm = async (req, res) => {
   return res.render("newUser");
 };
 
-<<<<<<< Updated upstream
-const newAuthorFormData = async (req, res) => {
-  const user = awaitAuthor.findOne({ where: { username: req.body.username } });
-  console.log(user.password);
-  const newAuthor = await Author.create({
-=======
+
 const newUserFormData = async (req, res) => {
   const newUser = await User.create({
->>>>>>> Stashed changes
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
