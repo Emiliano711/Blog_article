@@ -1,5 +1,7 @@
-module.exports = function (sequelize, Model, DataTypes) {
-    class Comment extends Model {}
+const { Model, DataTypes } = require("sequelize");
+
+class Comment extends Model {
+  static initModel(sequelize) {
     Comment.init(
       {
         id: {
@@ -11,13 +13,14 @@ module.exports = function (sequelize, Model, DataTypes) {
           type: DataTypes.TEXT,
           allowNull: false,
         },
-        
       },
       {
         sequelize,
-        modelName: "Comment",
-      }
+        modelName: "comment",
+      },
     );
     return Comment;
-  };
-  
+  }
+}
+
+module.exports = Comment;

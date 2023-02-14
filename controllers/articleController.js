@@ -1,4 +1,4 @@
-const { sequelize, Author, Article, Comment } = require("../models/index");
+const { sequelize, User, Article, Comment } = require("../models/index");
 const formidable = require("formidable");
 
 const form = formidable({
@@ -9,7 +9,7 @@ const form = formidable({
 
 const showHome = async (req, res) => {
   const articles = await Article.findAll({
-    include: Author,
+    include: User,
     order: [["updatedAt", "DESC"]],
   });
   return res.render("home", { articles });
@@ -22,7 +22,7 @@ const createArticleForm = (req, res) => {
 const postDataArticle = async (req, res) => {
   form.parse(req, async (err, fields, files) => {
     const newUser = await Article.create({
-      AuthorId: fields.idUser,
+      userId: fields.idUser,
       firstname: fields.firstname,
       lastname: fields.lastname,
       title: fields.title,
@@ -35,20 +35,20 @@ const postDataArticle = async (req, res) => {
 // index articles formato json
 const index = async (req, res) => {
   const articles = await Article.findAll({
-    include: Author,
+    include: User,
   });
   res.json(articles);
 };
 
 const showSingleArticle = async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
-    include: [Author],
+    include: [User],
   });
   const comments = await Comment.findAll({
     where: {
-      ArticleId: req.params.id,
+      articleId: req.params.id,
     },
-    include: Author,
+    include: User,
   });
   res.render("articles", { article, comments });
 };

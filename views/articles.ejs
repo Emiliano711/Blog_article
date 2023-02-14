@@ -17,8 +17,8 @@
     <%- include("partials/navbar.ejs") %>
     <div class="container-img">
       <h2><%= article.title %></h2>
-      <p><%= article.Author.firstname %> <%= article.Author.lastname %> <%= article.createdAt %></p>
-      <img class="img-fluid mt-2" src="<%= article.image %>" alt="imagen del author" />
+      <p><%= article.user.firstname %> <%= article.user.lastname %> <%= article.createdAt %></p>
+      <img class="img-fluid mt-2" src="<%= article.image %>" alt="imagen del Autor" />
     </div>
     <p id="parrafo"><%= article.content %></p>
 
@@ -33,7 +33,7 @@
         <% for (const comment of comments) { %>
         <p class="postComment"><%= comment.content %></p>
         <p id="smallComment">
-          Comment by <%= comment.Author.firstname %> <%= comment.Author.lastname %>
+          Comment by <%= comment.user.firstname %> <%= comment.user.lastname %>
         </p>
         <% } %>
       </div>

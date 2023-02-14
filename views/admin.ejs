@@ -20,7 +20,7 @@
       <h1 id="article-title">Articles</h1>
       <div id="buttons">
         <a href="/create" class="btn btn-success text-end" id="new"> New Article</a>
-        <a href="/create/newAuthor" class="btn btn-success text-end" id="newAuthor">New Author</a>
+        <a href="/create/newUser" class="btn btn-success text-end" id="newUser">New User</a>
       </div>
       <table class="table table-striped p-2" id="admin-table">
         <thead>
@@ -30,7 +30,7 @@
             <th scope="col">Content</th>
             <th scope="col">Image</th>
             <th scope="col">created at</th>
-            <th scope="col">Author</th>
+            <th scope="col">Autor</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@
             <td><%= artic.content %></td>
             <td><img src="<%= artic.image %>" alt="imgarticle" /></td>
             <td><%= artic.createdAt %></td>
-            <td><%= artic.Author.firstname %> <%= artic.Author.lastname %></td>
+            <td><%= artic.user.firstname %> <%= artic.user.lastname %></td>
             <td>
               <a href="/admin/edit/<%= artic.id %>">
                 <button class="btn btn-primary">Modify</button>

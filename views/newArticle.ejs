@@ -16,12 +16,7 @@
   <body id="body">
     <%-include("partials/navbar") %>
     <div class="mb-3">
-      <form
-        id="newArt"
-        action="/create"
-        method="post"
-        enctype="multipart/form-data"
-      >
+      <form id="newArt" action="/create" method="post" enctype="multipart/form-data">
         <label for="firstname" class="form-label">Firstname</label>
         <input
           type="text"
@@ -31,13 +26,7 @@
           name="firstname"
         />
         <label for="idUser" class="form-label">Id User</label>
-        <input
-          type="text"
-          class="form-control"
-          id="idUser"
-          placeholder="id..."
-          name="idUser"
-        />
+        <input type="text" class="form-control" id="idUser" placeholder="id..." name="idUser" />
         <label for="lastname" class="form-label">Lastname</label>
         <input
           class="form-control"
@@ -47,13 +36,7 @@
           placeholder="lastname..."
         />
         <label for="title" class="form-label">Title</label>
-        <input
-          class="form-control"
-          id="title"
-          name="title"
-          rows="3"
-          placeholder="title..."
-        />
+        <input class="form-control" id="title" name="title" rows="3" placeholder="title..." />
         <label for="image" class="form-label">Select an image</label>
         <input
           type="file"
@@ -78,9 +61,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://kit.fontawesome.com/06adc08716.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/06adc08716.js" crossorigin="anonymous"></script>
   </body>
 </html>
