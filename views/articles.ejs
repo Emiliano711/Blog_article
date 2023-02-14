@@ -17,40 +17,24 @@
     <%- include("partials/navbar.ejs") %>
     <div class="container-img">
       <h2><%= article.title %></h2>
-      <p>
-        <%= article.Author.firstname %> <%= article.Author.lastname %> <%=
-        article.createdAt %>
-      </p>
-      <img class="img-fluid mt-2"  src="<%= article.image %>" alt="imagen del author">  
+      <p><%= article.Author.firstname %> <%= article.Author.lastname %> <%= article.createdAt %></p>
+      <img class="img-fluid mt-2" src="<%= article.image %>" alt="imagen del author" />
     </div>
     <p id="parrafo"><%= article.content %></p>
 
     <div class="mb-3">
       <h3 id="h3-comment">Add comment</h3>
-      <form
-        action="/comments/<%= article.id %> "
-        method="post"
-        id="form-comment"
-      >
-      <select class="form-select" aria-label="Default select example" name="author">
-        <option selected>Select your fullname</option> 
-        <% for (const user of author) { %>
-          <option value="<%= user.id %>"> <%= user.firstname %> <%= user.lastname %></option>
-        <% } %>
-      </select>
-        <textarea 
-          class="form-control"
-          id="content"
-          rows="3"
-          name="content"
-        ></textarea>
+      <form action="/comments/<%= article.id %> " method="post" id="form-comment">
+        <textarea class="form-control" id="content" rows="3" name="content"></textarea>
         <button id="boton" class="btn btn-primary">Post</button>
       </form>
       <div class="comment-container">
         <h3 class="comment-h3">Comments ( <%= comments.length %> )</h3>
         <% for (const comment of comments) { %>
-          <p class="postComment"><%= comment.content %> </p>
-          <p id="smallComment"> Comment by <%= comment.Author.firstname %> <%= comment.Author.lastname %> </p>
+        <p class="postComment"><%= comment.content %></p>
+        <p id="smallComment">
+          Comment by <%= comment.Author.firstname %> <%= comment.Author.lastname %>
+        </p>
         <% } %>
       </div>
     </div>
@@ -60,9 +44,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://kit.fontawesome.com/06adc08716.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/06adc08716.js" crossorigin="anonymous"></script>
   </body>
 </html>
