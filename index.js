@@ -31,14 +31,14 @@ const form = formidable ({
   uploadDir: __dirname + "/public/img/",
   keepExtensions: true
 });
-
-app.get("/api/blog", async (req, res) => {
+// articleControllerindex
+/* app.get("/api/blog", async (req, res) => {
   const articles = await Article.findAll({
     include: Author,
     order: [["id", "DESC"]],
   });
   res.json(articles);
-});
+}); */
 
 app.get("/create/newAuthor", async (req, res) => {
   return res.render("newAuthor");
@@ -53,17 +53,17 @@ app.post("/create/newAuthor", async (req, res) => {
   });
   return res.redirect("/admin")
 })
-
-app.get("/", async (req, res) => {
+//exportando a articleRoutes + articleController
+/* app.get("/", async (req, res) => {
   const articles = await Article.findAll({
     include: Author,
     order: [["id", "DESC"]],
   })
   console.log(articles);
   return res.render("home", { articles });
-});
-
-app.get("/articles/:id", async (req, res) => {
+}); */
+// article router + articleControll 
+/* app.get("/articles/:id", async (req, res) => {
   const article = await Article.findByPk(req.params.id, {
     include: [Author, Comment]
   });
@@ -75,7 +75,7 @@ app.get("/articles/:id", async (req, res) => {
   })
   const author = await Author.findAll()
   res.render("articles", { article, comments, author });
-});
+}); */
 
 app.post("/comments/:id", async (req, res) => {
 await Comment.create({
@@ -121,12 +121,12 @@ app.get("/admin/delete/:id", async (req, res) => {
     }
   });
 });
-
-app.get("/create", (req, res) => {
+// articleRoutes + articleControlll
+/* app.get("/create", (req, res) => {
   return res.render("newArticle");
-});
-
-app.post("/create", async (req, res) => {
+}); */
+// exportada a articleController
+/* app.post("/create", async (req, res) => {
   
   form.parse(req, async (err, fields, files) => {
     const newUser = await Article.create({
@@ -140,7 +140,7 @@ app.post("/create", async (req, res) => {
   })
 
   return res.redirect("/admin");
-});
+}); */
 
 app.listen(APP_PORT, () =>
   console.log(`Listening http://localhost:${APP_PORT}`)
