@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const testConnection = require("./testConnection");
 const userSeeder = require("./seeders/userSeeder");
 const articleSeeder = require("./seeders/articleSeeder");
 const commentSeeder = require("./seeders/commentSeeder");
