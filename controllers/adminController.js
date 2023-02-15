@@ -40,7 +40,6 @@ const newUserForm = async (req, res) => {
   return res.render("newUser");
 };
 
-
 const newUserFormData = async (req, res) => {
   const newUser = await User.create({
     firstname: req.body.firstname,
