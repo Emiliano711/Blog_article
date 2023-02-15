@@ -1,4 +1,5 @@
 const { faker } = require("@faker-js/faker");
+const bcrypt = require("bcryptjs");
 
 module.exports = async function (Author) {
   const authors = [];
@@ -7,7 +8,7 @@ module.exports = async function (Author) {
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
       email: faker.internet.email(),
-      password: faker.internet.password(),
+      password: await bcrypt.hash("1234", 8),
     });
   }
 

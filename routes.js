@@ -26,10 +26,12 @@ router.post("/admin/edit/:id", adminController.editFormData);
 
 router.get("/admin/delete/:id", adminController.destroy);
 
-router.get("/create/newAuthor", adminController.newAuthorForm);
+router.get("/create/newUser", adminController.newUserForm);
 
-router.post("/create/newAuthor", adminController.newAuthorFormData);
+router.post("/create/newUser", adminController.newUserFormData);
 
 router.get("/registro", userController.show);
+
+router.get("/registro/login", userController.login);
 
 module.exports = router;

@@ -1,9 +1,9 @@
-const { sequelize, Author, Article, Comment } = require("../models/index");
+const { sequelize, User, Article, Comment } = require("../models/index");
 
 const panelAdmin = async (req, res) => {
   //ruta de admin
   const articles = await Article.findAll({
-    include: Author, // incluyo author para la columna que trae firstname & lastname
+    include: User, // incluyo User para la columna que trae firstname & lastname
   });
   return res.render("admin", { articles });
 };
@@ -36,12 +36,13 @@ const destroy = async (req, res) => {
   });
 };
 
-const newAuthorForm = async (req, res) => {
-  return res.render("newAuthor");
+const newUserForm = async (req, res) => {
+  return res.render("newUser");
 };
 
-const newAuthorFormData = async (req, res) => {
-  const newAuthor = await Author.create({
+
+const newUserFormData = async (req, res) => {
+  const newUser = await User.create({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
@@ -55,6 +56,6 @@ module.exports = {
   editForm,
   editFormData,
   destroy,
-  newAuthorForm,
-  newAuthorFormData,
+  newUserForm,
+  newUserFormData,
 };

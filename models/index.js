@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
+const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
@@ -8,19 +8,23 @@ const sequelize = new Sequelize(
     dialect: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
     logging: false, // Para evitar que TablePlus envie los mensajes de creacion
-  }
+  },
 );
 
-const Author = require("./Author")(sequelize, Model, DataTypes);
-const Article = require("./Article")(sequelize, Model, DataTypes);
-const Comment = require("./Comment")(sequelize, Model, DataTypes);
+const User = require("./User");
+const Article = require("./Article");
+const Comment = require("./Comment");
+
+User.initModel(sequelize);
+Comment.initModel(sequelize);
+Article.initModel(sequelize);
 
 //Asociacion
-Author.hasMany(Article);
-Article.belongsTo(Author);
+User.hasMany(Article);
+Article.belongsTo(User);
 Article.hasMany(Comment);
 Comment.belongsTo(Article);
-Author.hasMany(Comment);
-Comment.belongsTo(Author);
+User.hasMany(Comment);
+Comment.belongsTo(User);
 
-module.exports = { sequelize, Author, Article, Comment };
+module.exports = { sequelize, User, Article, Comment };
