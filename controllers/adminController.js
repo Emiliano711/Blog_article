@@ -15,10 +15,15 @@ const editForm = async (req, res) => {
 
 const editFormData = async (req, res) => {
   const artEdit = await Article.findByPk(req.params.id);
-  artEdit.title = req.body.title;
-  artEdit.content = req.body.content;
-  await artEdit.save();
-  res.redirect("/admin");
+  console.log();
+  if (req.user.id !== artEdit.userId) {
+    res.redirect("/");
+  } else {
+    artEdit.title = req.body.title;
+    artEdit.content = req.body.content;
+    await artEdit.save();
+    res.redirect("/admin");
+  }
 };
 
 const destroy = async (req, res) => {
