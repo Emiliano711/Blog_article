@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const { where } = require("sequelize");
 const { User } = require("../models");
 
@@ -10,7 +11,12 @@ async function show(req, res) {
 }
 async function login(req, res) {
   console.log(req.body);
-  User.findOne({ where: { email: req.body.email } });
+  const user = await User.findOne({ where: { email: req.body.email } });
+
+  const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+
+  console.log(isValidPassword);
+
   res.render("registro");
 }
 

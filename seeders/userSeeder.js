@@ -17,7 +17,7 @@ module.exports = async function (User) {
   }
   users.push({
     firstname: "pepe",
-    lastname: "jaja",
+    lastname: "lalala",
     email: "pepe@gmail.com",
     password: await bcrypt.hash("1234", 8),
   });
