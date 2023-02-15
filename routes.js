@@ -17,7 +17,7 @@ router.get("/api/blog", articleController.index);
 
 router.get("/articles/:id", articleController.showSingleArticle);
 
-router.post("/comments/:id", commentController.commentPost);
+router.post("/comments/:id", isAuthenticated, commentController.commentPost);
 
 router.get("/admin", isAuthenticated, adminController.panelAdmin);
 
