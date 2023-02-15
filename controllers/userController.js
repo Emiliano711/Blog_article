@@ -26,7 +26,7 @@ async function store(req, res) {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    password: req.body.password,
+    password: await bcrypt.hash("req.body.password", 8),
   });
   console.log("se ha creado un usuario correctamente");
   return res.redirect("/admin");
