@@ -13,15 +13,20 @@ module.exports = (app) => {
     }),
   );
   passport.use(
-    new LocalStrategy(async function (username, password, cb) {
+    new LocalStrategy({ usernameField: "email", passwordField: "pass" }, async function (
+      email,
+      pass,
+      cb,
+    ) {
+      console.log(email, pass);
       try {
-        const user = await User.findOne({ where: { username } });
+        const user = await User.findOne({ where: { email } });
 
         if (!user) {
           console.log("Nombre de usuario no existe.");
           return cb(null, false, { message: "Credenciales incorrectas." });
         }
-        const match = await bcrypt.compare(password, user.password);
+        const match = await bcrypt.compare(pass, user.password);
         if (!match) {
           console.log("La contraseña es inválida.");
           return cb(null, false, { message: "Credenciales incorrectas." });

@@ -1,24 +1,19 @@
 const bcrypt = require("bcryptjs");
 const { where } = require("sequelize");
 const { User } = require("../models");
+const passport = require("passport");
 
 // Display a listing of the resource.
 async function index(req, res) {}
 
 // Display the specified resource.
 async function show(req, res) {
-  res.render("registro");
+  res.render("login");
 }
-async function login(req, res) {
-  console.log(req.body);
-  const user = await User.findOne({ where: { email: req.body.email } });
-
-  const isValidPassword = await bcrypt.compare(req.body.pass, user.password);
-
-  console.log(isValidPassword);
-
-  res.render("registro");
-}
+const login = passport.authenticate("local", {
+  successRedirect: "/admin",
+  failureRedirect: "/login",
+});
 
 // Show the form for creating a new resource
 async function create(req, res) {
