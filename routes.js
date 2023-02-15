@@ -31,8 +31,8 @@ router.get("/create/newUser", adminController.newUserForm);
 
 router.post("/create/newUser", adminController.newUserFormData);
 
-router.get("/registro", userController.show);
+router.get("/login", userController.show);
 
-router.post("/registro", userController.login);
+router.post("/login", userController.login);
 
 module.exports = router;

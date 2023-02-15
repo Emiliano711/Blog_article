@@ -3,7 +3,7 @@ function isAuthenticated(req, res, next) {
     next();
   } else {
     console.log("No estas logeado");
-    res.redirect("/registro");
+    res.redirect("/login");
   }
 }
 module.exports = isAuthenticated;

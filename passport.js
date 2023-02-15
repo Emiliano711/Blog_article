@@ -13,9 +13,13 @@ module.exports = (app) => {
     }),
   );
   passport.use(
-    new LocalStrategy(async function (username, password, cb) {
+    new LocalStrategy({ usernameField: "email", passwordField: "password" }, async function (
+      email,
+      password,
+      cb,
+    ) {
       try {
-        const user = await User.findOne({ where: { username } });
+        const user = await User.findOne({ where: { email } });
 
         if (!user) {
           console.log("Nombre de usuario no existe.");
