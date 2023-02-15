@@ -5,6 +5,7 @@ const commentController = require("./controllers/commentController");
 const adminController = require("./controllers/adminController");
 const userController = require("./controllers/userController");
 const formidable = require("formidable");
+const isAuthenticated = require("./middlewares/isAuthenticated");
 
 router.get("/", articleController.showHome);
 
@@ -18,7 +19,7 @@ router.get("/articles/:id", articleController.showSingleArticle);
 
 router.post("/comments/:id", commentController.commentPost);
 
-router.get("/admin", adminController.panelAdmin);
+router.get("/admin", isAuthenticated, adminController.panelAdmin);
 
 router.get("/admin/edit/:id", adminController.editForm);
 
