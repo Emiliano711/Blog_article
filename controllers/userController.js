@@ -12,12 +12,11 @@ async function show(req, res) {
 async function login(req, res) {
   console.log(req.body);
   const user = await User.findOne({ where: { email: req.body.email } });
-
-  const isValidPassword = await bcrypt.compare(req.body.pass, user.password);
+  const isValidPassword = await bcrypt.compare(req.body.password, user.password);
 
   console.log(isValidPassword);
 
-  res.render("registro");
+  res.render("home");
 }
 
 // Show the form for creating a new resource
