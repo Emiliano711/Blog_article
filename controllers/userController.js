@@ -23,8 +23,8 @@ async function create(req, res) {
 // Store a newly created resource in storage.
 async function store(req, res) {
   const user = await User.findOne({ where: { email: req.body.email } });
-  await bcrypt.compare(req.body.email, user.firstname);
-  if (user.firstname === req.body.email) {
+  const isValidEmail = await bcrypt.compare(req.body.email, user.email);
+  if (isValidEmail === false) {
     res.redirect("/form-user");
   } else {
     const newUser = await User.create({
