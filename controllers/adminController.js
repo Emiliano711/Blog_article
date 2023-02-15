@@ -15,9 +15,8 @@ const editForm = async (req, res) => {
 
 const editFormData = async (req, res) => {
   const artEdit = await Article.findByPk(req.params.id);
-  console.log();
   if (req.user.id !== artEdit.userId) {
-    res.redirect("/");
+    res.send("No puede editar artículos que no son de su autoría");
   } else {
     artEdit.title = req.body.title;
     artEdit.content = req.body.content;
