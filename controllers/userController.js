@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { User } = require("../models");
 
 // Display a listing of the resource.
@@ -8,7 +9,9 @@ async function show(req, res) {
   res.render("registro");
 }
 async function login(req, res) {
-  res.redirect("/registro");
+  console.log(req.body);
+  User.findOne({ where: { email: req.body.email } });
+  res.render("registro");
 }
 
 // Show the form for creating a new resource

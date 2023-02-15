@@ -19,7 +19,7 @@
           <h4>Log in to create your own blogs!</h4>
           <p>What are you waiting for?</p>
         </div>
-        <form action="" method="post">
+        <form action="/registro" method="post">
           <div class="card">
             <div class="card-body">
               <div class="input-group mb-3">
@@ -29,21 +29,25 @@
                   placeholder="Email"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  name="email"
+                  id="email"
                 />
               </div>
               <div class="input-group mb-3 text-center">
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   placeholder="Pass"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  name="pass"
+                  id="pass"
                 />
               </div>
             </div>
             <div class="d-grid gap-2">
-              <a type="sumbit" class="btn btn-dark" href="#" role="button">Log In</a>
-              <a class="btn btn-dark" href="#" role="button">Create New Account</a>
+              <button type="sumbit" class="btn btn-dark" role="button">LogIn</button>
+              <button class="btn btn-dark" href="#" role="button">Create New Account</button>
             </div>
           </div>
         </form>
