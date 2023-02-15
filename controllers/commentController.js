@@ -1,5 +1,4 @@
 const { sequelize, User, Article, Comment } = require("../models/index");
-const passport = "passport";
 
 async function commentPost(req, res) {
   const articleId = req.params.id;
