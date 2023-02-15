@@ -7,7 +7,7 @@ const articleSeeder = require("./seeders/articleSeeder");
 const commentSeeder = require("./seeders/commentSeeder");
 const passport = require("./passport.js");
 
-const { sequelize, User, Article, Comment } = require("./models/index");
+const { sequelize, User, Article, Comment } = require("./models");
 
 const express = require("express");
 const app = express();
@@ -22,13 +22,13 @@ app.use(express.json());
 
 passport(app);
 
-//iife
-(async function () {
-  await createTables(sequelize);
+async function init(sequelize) {
+  await sequelize.sync({ force: true });
   await userSeeder(User);
   await articleSeeder(Article);
   await commentSeeder(Comment);
-});
+}
+init(sequelize);
 
 app.use(routes);
 

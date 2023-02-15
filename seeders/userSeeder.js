@@ -15,6 +15,12 @@ module.exports = async function (User) {
       password: await bcrypt.hash("1234", 8),
     });
   }
+  users.push({
+    firstname: "pepe",
+    lastname: "jaja",
+    email: "pepe@gmail.com",
+    password: await bcrypt.hash("1234", 8),
+  });
 
   await User.bulkCreate(users);
 };

@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   {
     dialect: process.env.DB_CONNECTION,
     host: process.env.DB_HOST,
-    logging: false, // Para evitar que TablePlus envie los mensajes de creacion
+    logging: false, // Para evitar que Secuelize envie los mensajes de creacion
   },
 );
 
