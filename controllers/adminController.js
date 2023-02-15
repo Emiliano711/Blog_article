@@ -41,13 +41,7 @@ const newUserForm = async (req, res) => {
 };
 
 const newUserFormData = async (req, res) => {
-  const newUser = await User.create({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    password: req.body.password,
-  });
-  return res.redirect("/admin");
+  return res.render("newUser");
 };
 
 module.exports = {

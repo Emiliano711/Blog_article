@@ -27,9 +27,9 @@ router.post("/admin/edit/:id", adminController.editFormData);
 
 router.get("/admin/delete/:id", adminController.destroy);
 
-router.get("/create/newUser", adminController.newUserForm);
+router.get("/form-user", userController.create);
 
-router.post("/create/newUser", adminController.newUserFormData);
+router.post("/form-user", userController.store);
 
 router.get("/login", userController.show);
 

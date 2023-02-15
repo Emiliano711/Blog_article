@@ -17,11 +17,20 @@ const login = passport.authenticate("local", {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  res.redirect("/formUser");
+  res.render("newUser");
 }
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const newUser = await User.create({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  console.log("se ha creado un usuario correctamente");
+  return res.redirect("/admin");
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
