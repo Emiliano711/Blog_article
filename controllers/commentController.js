@@ -1,12 +1,12 @@
 const { sequelize, User, Article, Comment } = require("../models/index");
 
-const commentPost = async (req, res) => {
+async function commentPost(req, res) {
+  const articleId = req.params.id;
   await Comment.create({
     content: req.body.content,
-    userId: req.body.user,
-    ArticleId: req.params.id,
+    articleId: articleId,
+    userId: req.user.id,
   });
-  res.redirect(`/articles/${req.params.id}`);
-};
-
+  res.redirect(`/articles/${articleId}`);
+}
 module.exports = { commentPost };

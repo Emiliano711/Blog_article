@@ -9,6 +9,7 @@
       id="firstname"
       placeholder="firstname..."
       name="firstname"
+      required
     />
     <label for="lastname" class="form-label">Lastname</label>
     <input
@@ -17,9 +18,17 @@
       id="lastname"
       name="lastname"
       placeholder="lastname..."
+      required
     />
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="email..." />
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="email..."
+      required
+    />
     <label for="password" class="form-label">Password</label>
     <input
       type="password"
@@ -27,6 +36,7 @@
       id="password"
       name="password"
       placeholder="password..."
+      required
     />
     <button type="submit" class="btn btn-success">Create</button>
     <a href="/login" class="btn btn-dangger">Back to login</a>
