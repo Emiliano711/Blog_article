@@ -2,7 +2,7 @@ const { sequelize, User, Article, Comment } = require("../models/index");
 
 const panelAdmin = async (req, res) => {
   //ruta de admin
-  console.log(req.user.id);
+  console.log("User que entro a admin = " + req.user.id);
   const articles = await Article.findAll({
     include: User, // incluyo User para la columna que trae firstname & lastname
   });
