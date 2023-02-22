@@ -15,42 +15,40 @@
     <%- include('partials/navbar') %>
     <div class="container my-5">
       <div class="d-flex justify-content-center">
-        <div style="width: 18rem">
+        <div>
           <h4>Log in to create your own blogs!</h4>
           <p>What are you waiting for?</p>
         </div>
         <form action="/login" method="post">
-          <div class="card">
-            <div class="card-body">
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Email"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  name="email"
-                  id="email"
-                  required
-                />
-              </div>
-              <div class="input-group mb-3 text-center">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  name="password"
-                  id="password"
-                  required
-                />
-              </div>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                name="email"
+                id="email"
+                required
+              />
             </div>
-            <div class="d-grid gap-2">
-              <button type="sumbit" class="btn btn-dark" role="button">LogIn</button>
-              <a class="btn btn-dark" href="/form-user" role="button">Create New Account</a>
+            <div class="input-group mb-3 text-center">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                name="password"
+                id="password"
+                required
+              />
             </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="sumbit" class="btn btn-dark" role="button">LogIn</button>
+            <a class="btn btn-dark" href="/form-user" role="button">Create New Account</a>
           </div>
         </form>
       </div>
